@@ -1,0 +1,77 @@
+% Created 2019-03-21 Thu 20:32
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{minted}
+\usepackage[margin=2cm]{geometry}
+\DeclareMathOperator{\sign}{sign}
+\date{\today}
+\title{}
+\hypersetup{
+ pdfauthor={},
+ pdftitle={},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.1 (Org mode 9.2.2)}, 
+ pdflang={English}}
+\begin{document}
+
+
+\section{Linguagens formais}
+\label{sec:org4bee8ec}
+\(\Sigma\): alfabeto \\
+Exemplos:
+\begin{align*}
+  & \Sigma = \{\, 0, 1 \,\} \\
+  & \Sigma = \{\, \text{a}, \text{b}, \text{c}, \text{d}, \text{e} \,\} \\
+  & \Sigma = \{\, \triangle, \text{O}, \square, \text{X} \,\} \\
+\end{align*}
+Palavra (cadeia) é uma sequência de \(0\) ou mais símbolos do alfabeto. \\
+\(\lambda\) é a palavra vazia. \\
+\(|w|\) denota o tamanho da palavra \(w\), i.e. o número de símbolos na palavra. \\
+\(\Sigma^*\) é o conjunto de todas as possíveis palavras constituídas de símbolos
+deste alfabeto. \\
+Notação:
+\begin{align*}
+  & 0^4 = 0000 \\
+  & \Sigma^3 = \{ 000, 001, 010, 011, 100, 101, 110, 111 \}
+\end{align*}
+Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\). \\
+Como uma linguagem é um conjunto, as operações sobre conjuntos se aplicam. \\
+\subsection{Operações}
+\label{sec:orgc8ad2f0}
+Concatenação:
+\begin{align*}
+  & x = 00 \\
+  & y = 11 \\
+  & xy = 0011
+\end{align*}
+Reverso:
+\[
+  (xy)^{\text{R}} = 1100
+\]
+Observação: uma palavra \(w\) é um palíndromo se, e somente se \(w^{\text{R}} = w\). \\
+Em linguagens:
+\[ L_1L_2 = \{\, xy \,\mid\, x \in L_1,\, y \in L_2 \,\} \\ \]
+\begin{align*}
+  & L^0 = \{\, \lambda \,\} \\
+  & L^1 = L \\
+  & L^2 = LL \\
+  & L^* = \bigcup_{i \in \mathbb{N}} L^i \quad \text{Fecho de Kleene} \\
+  & L^+ = \bigcup_{i \in \mathbb{N}^*} L^i \\
+  & \emptyset^* = \{\, \lambda \,\} \\
+  & \emptyset^+ = \emptyset
+\end{align*}
+\end{document}

@@ -1,0 +1,58 @@
+# -*- after-save-hook: org-latex-export-to-pdf; -*-
+#+latex_header: \usepackage[margin=2cm]{geometry}
+#+latex_header: \DeclareMathOperator{\sign}{sign}
+
+* Linguagens formais
+  $\Sigma$: alfabeto \\
+  Exemplos:
+  #+begin_export latex
+  \begin{align*}
+    & \Sigma = \{\, 0, 1 \,\} \\
+    & \Sigma = \{\, \text{a}, \text{b}, \text{c}, \text{d}, \text{e} \,\} \\
+    & \Sigma = \{\, \triangle, \text{O}, \square, \text{X} \,\} \\
+  \end{align*}
+  #+end_export
+  Palavra (cadeia) é uma sequência de $0$ ou mais símbolos do alfabeto. \\
+  $\lambda$ é a palavra vazia. \\
+  $|w|$ denota o tamanho da palavra $w$, i.e. o número de símbolos na palavra. \\
+  $\Sigma^*$ é o conjunto de todas as possíveis palavras constituídas de símbolos
+  deste alfabeto. \\
+  Notação:
+  #+begin_export latex
+  \begin{align*}
+    & 0^4 = 0000 \\
+    & \Sigma^3 = \{ 000, 001, 010, 011, 100, 101, 110, 111 \}
+  \end{align*}
+  #+end_export
+  Uma linguagem é um conjunto de palavras $L \subseteq \Sigma^*$. \\
+  Como uma linguagem é um conjunto, as operações sobre conjuntos se aplicam. \\
+** Operações
+   Concatenação:
+   #+begin_export latex
+   \begin{align*}
+     & x = 00 \\
+     & y = 11 \\
+     & xy = 0011
+   \end{align*}
+   #+end_export
+   Reverso:
+   #+begin_export latex
+   \[
+     (xy)^{\text{R}} = 1100
+   \]
+   #+end_export
+   Observação: uma palavra $w$ é um palíndromo se, e somente se $w^{\text{R}} = w$. \\
+   Em linguagens:
+   #+begin_export latex
+   \[ L_1L_2 = \{\, xy \,\mid\, x \in L_1,\, y \in L_2 \,\} \\ \]
+   \begin{align*}
+     & L^0 = \{\, \lambda \,\} \\
+     & L^1 = L \\
+     & L^2 = LL \\
+     & L^* = \bigcup_{i \in \mathbb{N}} L^i \quad \text{Fecho de Kleene} \\
+     & L^+ = \bigcup_{i \in \mathbb{N}^*} L^i \\
+     & \emptyset^* = \{\, \lambda \,\} \\
+     & \emptyset^+ = \emptyset
+   \end{align*}
+   #+end_export
+   
