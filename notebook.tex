@@ -1,4 +1,4 @@
-% Created 2019-03-21 Thu 20:32
+% Created 2019-03-26 Tue 20:27
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -30,28 +30,26 @@
 
 
 \section{Linguagens formais}
-\label{sec:org4bee8ec}
-\(\Sigma\): alfabeto \\
-Exemplos:
+\label{sec:orgedcbd98}
+\subsection{Alfabetos}
+\label{sec:orgb87a6a2}
+Um alfabeto é denotado por \(\Sigma\). Exemplos:
 \begin{align*}
   & \Sigma = \{\, 0, 1 \,\} \\
   & \Sigma = \{\, \text{a}, \text{b}, \text{c}, \text{d}, \text{e} \,\} \\
-  & \Sigma = \{\, \triangle, \text{O}, \square, \text{X} \,\} \\
+  & \Sigma = \{\, \triangle, \text{O}, \square, \text{X} \,\}
 \end{align*}
-Palavra (cadeia) é uma sequência de \(0\) ou mais símbolos do alfabeto. \\
-\(\lambda\) é a palavra vazia. \\
-\(|w|\) denota o tamanho da palavra \(w\), i.e. o número de símbolos na palavra. \\
-\(\Sigma^*\) é o conjunto de todas as possíveis palavras constituídas de símbolos
-deste alfabeto. \\
+\subsection{Palavras}
+\label{sec:orgc518943}
+Uma palavra (ou cadeia) é uma sequência de zero ou mais símbolos do alfabeto.
+\\[5pt]
 Notação:
 \begin{align*}
+  & \lambda = \varnothing \\
   & 0^4 = 0000 \\
-  & \Sigma^3 = \{ 000, 001, 010, 011, 100, 101, 110, 111 \}
+  & \Sigma^3 = \{ 000, 001, 010, 011, 100, 101, 110, 111 \} \\
+  & \Sigma^* = \bigcup_{i \in \mathbb{N}} \Sigma^i \quad \text{conjunto de todas as possíveis palavras deste alfabeto.}
 \end{align*}
-Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\). \\
-Como uma linguagem é um conjunto, as operações sobre conjuntos se aplicam. \\
-\subsection{Operações}
-\label{sec:orgc8ad2f0}
 Concatenação:
 \begin{align*}
   & x = 00 \\
@@ -62,8 +60,12 @@ Reverso:
 \[
   (xy)^{\text{R}} = 1100
 \]
-Observação: uma palavra \(w\) é um palíndromo se, e somente se \(w^{\text{R}} = w\). \\
-Em linguagens:
+Observação: uma palavra \(w\) é um palíndromo se, e somente se \(w^{\text{R}} = w\).
+\subsection{Linguagens}
+\label{sec:org1def875}
+Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\).
+\subsubsection{Operações}
+\label{sec:org0193a2f}
 \[ L_1L_2 = \{\, xy \,\mid\, x \in L_1,\, y \in L_2 \,\} \\ \]
 \begin{align*}
   & L^0 = \{\, \lambda \,\} \\
@@ -71,7 +73,34 @@ Em linguagens:
   & L^2 = LL \\
   & L^* = \bigcup_{i \in \mathbb{N}} L^i \quad \text{Fecho de Kleene} \\
   & L^+ = \bigcup_{i \in \mathbb{N}^*} L^i \\
-  & \emptyset^* = \{\, \lambda \,\} \\
-  & \emptyset^+ = \emptyset
+  & \varnothing^* = \{\, \lambda \,\} \\
+  & \varnothing^+ = \varnothing
 \end{align*}
+\subsection{Autômatos}
+\label{sec:orgcbddc2a}
+Um autômato finito determinístico é definido por:
+\begin{align*}
+  & Q && \text{Um conjunto finito de estados.} \\
+  & \Sigma && \text{Um alfabeto finito.} \\
+  & \delta: Q \times \Sigma \to Q && \text{Uma função de transição.} \\
+  & q_o \in Q && \text{Um estado inicial.} \\
+  & F \subseteq Q && \text{Um conjunto de estados finais.}
+\end{align*}
+Notação:
+\begin{align*}
+  & L(M) = A \qquad \text{A linguagem reconhecida pelo autômato $M$.} \\[5pt]
+  & L(M: F = \varnothing) = \varnothing
+\end{align*}
+\subsubsection{Computação}
+\label{sec:orgad4b725}
+Seja \(M = (Q,\, \Sigma,\, \delta,\, q_0,\, F)\) um autômato finito, e \(w \in \Sigma^*\).
+Dizemos que \(M\) aceita \(w\) se existe uma \textbf{sequência} de estados
+\(r_1, \,\hdots,\, r_n \in Q\) satisfazendo:
+\begin{enumerate}
+\item \(r_0 = q_0\)
+\item \(\forall\, i \in [0, n): \delta(r_i,\, w_{i + 1}) = r_{i + 1}\)
+\item \(r_n \in F\)
+\end{enumerate}
+Um autômato \(M\) reconhece uma linguagem \(L\) se \(\forall\, w \in L: M \text{ aceita } w\). \\
+Uma linguagem é formal se existe um autômato que a reconhece.
 \end{document}
