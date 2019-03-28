@@ -1,4 +1,4 @@
-% Created 2019-03-26 Tue 20:27
+% Created 2019-03-28 Thu 20:23
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -30,9 +30,9 @@
 
 
 \section{Linguagens formais}
-\label{sec:orgedcbd98}
+\label{sec:org700ee4f}
 \subsection{Alfabetos}
-\label{sec:orgb87a6a2}
+\label{sec:orgd0d5410}
 Um alfabeto é denotado por \(\Sigma\). Exemplos:
 \begin{align*}
   & \Sigma = \{\, 0, 1 \,\} \\
@@ -40,7 +40,7 @@ Um alfabeto é denotado por \(\Sigma\). Exemplos:
   & \Sigma = \{\, \triangle, \text{O}, \square, \text{X} \,\}
 \end{align*}
 \subsection{Palavras}
-\label{sec:orgc518943}
+\label{sec:org06083bf}
 Uma palavra (ou cadeia) é uma sequência de zero ou mais símbolos do alfabeto.
 \\[5pt]
 Notação:
@@ -62,10 +62,10 @@ Reverso:
 \]
 Observação: uma palavra \(w\) é um palíndromo se, e somente se \(w^{\text{R}} = w\).
 \subsection{Linguagens}
-\label{sec:org1def875}
+\label{sec:org04ab6ee}
 Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\).
 \subsubsection{Operações}
-\label{sec:org0193a2f}
+\label{sec:orgaf180bd}
 \[ L_1L_2 = \{\, xy \,\mid\, x \in L_1,\, y \in L_2 \,\} \\ \]
 \begin{align*}
   & L^0 = \{\, \lambda \,\} \\
@@ -77,7 +77,7 @@ Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\).
   & \varnothing^+ = \varnothing
 \end{align*}
 \subsection{Autômatos}
-\label{sec:orgcbddc2a}
+\label{sec:orgaefb11e}
 Um autômato finito determinístico é definido por:
 \begin{align*}
   & Q && \text{Um conjunto finito de estados.} \\
@@ -89,10 +89,11 @@ Um autômato finito determinístico é definido por:
 Notação:
 \begin{align*}
   & L(M) = A \qquad \text{A linguagem reconhecida pelo autômato $M$.} \\[5pt]
-  & L(M: F = \varnothing) = \varnothing
+  & L(M: F = \varnothing) = \varnothing \\[5pt]
+  & \hat{\delta}(e, w): \text{aplicação sucessiva de }\delta\text{ aos símbolos de }w.
 \end{align*}
 \subsubsection{Computação}
-\label{sec:orgad4b725}
+\label{sec:orgf450fc4}
 Seja \(M = (Q,\, \Sigma,\, \delta,\, q_0,\, F)\) um autômato finito, e \(w \in \Sigma^*\).
 Dizemos que \(M\) aceita \(w\) se existe uma \textbf{sequência} de estados
 \(r_1, \,\hdots,\, r_n \in Q\) satisfazendo:
@@ -102,5 +103,29 @@ Dizemos que \(M\) aceita \(w\) se existe uma \textbf{sequência} de estados
 \item \(r_n \in F\)
 \end{enumerate}
 Um autômato \(M\) reconhece uma linguagem \(L\) se \(\forall\, w \in L: M \text{ aceita } w\). \\
-Uma linguagem é formal se existe um autômato que a reconhece.
+Uma linguagem é regular se existe um autômato finito que a reconhece.
+\subsubsection{Minimização de estados}
+\label{sec:orgd357e0e}
+Dois estados \(e\) e \(e'\) são \textbf{equivalentes} se
+\[
+  \hat{\delta}(e, w) \in F \iff \hat{\delta}(e', w) \in F
+\]
+O algoritmo de minimização, então, é:
+\begin{enumerate}
+\item Produza uma partição \(\mathcal{P}_0 = \{F,\, Q - F\}\) do conjunto de estados \(Q\),
+em que os estados finais estão separados dos não finais.
+\item Para cada bloco de estados \(B\) na partição \(\mathcal{P}_i\), cada símbolo \(s\) do
+alfabeto \(\Sigma\), e cada par de estados (\(e\), \(e'\)) contidos no bloco B:
+\begin{enumerate}
+\item Sejam \(d = \delta(e, s)\) e \(d' = \delta(e' , s)\) os estados para os quais o AFD
+transita quando lê o sı́mbolo \(s\) a partir dos estados \(e\) e \(e'\), respectivamente.
+\item Se \(d\) e \(d'\) pertencem a blocos diferentes na partiçãoo \(\mathcal{P}_i\), então
+os estados \(e\) e \(e'\) não são equivalentes, e devem ser separados na partição
+\(\mathcal{P}_{i+1}\).
+\end{enumerate}
+\item Se a partição \(\mathcal{P}_{i+1}\) for diferente da partiçãoo \(\mathcal{P}_i\),
+repita o passo 2.
+\item O autômato mínimo é construído de tal forma que seus estados são os blocos da
+última partição \(\mathcal{P}\) produzida.
+\end{enumerate}
 \end{document}
