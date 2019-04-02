@@ -1,4 +1,4 @@
-% Created 2019-03-28 Thu 20:23
+% Created 2019-04-02 Tue 20:30
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -17,6 +17,7 @@
 \usepackage{minted}
 \usepackage[margin=2cm]{geometry}
 \DeclareMathOperator{\sign}{sign}
+\setlength{\parindent}{0cm}
 \date{\today}
 \title{}
 \hypersetup{
@@ -30,9 +31,9 @@
 
 
 \section{Linguagens formais}
-\label{sec:org700ee4f}
+\label{sec:org99c85d6}
 \subsection{Alfabetos}
-\label{sec:orgd0d5410}
+\label{sec:org3b1f744}
 Um alfabeto é denotado por \(\Sigma\). Exemplos:
 \begin{align*}
   & \Sigma = \{\, 0, 1 \,\} \\
@@ -40,32 +41,31 @@ Um alfabeto é denotado por \(\Sigma\). Exemplos:
   & \Sigma = \{\, \triangle, \text{O}, \square, \text{X} \,\}
 \end{align*}
 \subsection{Palavras}
-\label{sec:org06083bf}
+\label{sec:org17cde05}
 Uma palavra (ou cadeia) é uma sequência de zero ou mais símbolos do alfabeto.
 \\[5pt]
-Notação:
+\textbf{Notação}:
 \begin{align*}
   & \lambda = \varnothing \\
   & 0^4 = 0000 \\
   & \Sigma^3 = \{ 000, 001, 010, 011, 100, 101, 110, 111 \} \\
   & \Sigma^* = \bigcup_{i \in \mathbb{N}} \Sigma^i \quad \text{conjunto de todas as possíveis palavras deste alfabeto.}
 \end{align*}
-Concatenação:
+\textbf{Concatenação}:
 \begin{align*}
   & x = 00 \\
   & y = 11 \\
   & xy = 0011
 \end{align*}
-Reverso:
+\textbf{Reverso}:
 \[
   (xy)^{\text{R}} = 1100
 \]
 Observação: uma palavra \(w\) é um palíndromo se, e somente se \(w^{\text{R}} = w\).
 \subsection{Linguagens}
-\label{sec:org04ab6ee}
-Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\).
-\subsubsection{Operações}
-\label{sec:orgaf180bd}
+\label{sec:org75c1770}
+Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\). \\[5pt]
+\textbf{Operações}:
 \[ L_1L_2 = \{\, xy \,\mid\, x \in L_1,\, y \in L_2 \,\} \\ \]
 \begin{align*}
   & L^0 = \{\, \lambda \,\} \\
@@ -76,8 +76,10 @@ Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\).
   & \varnothing^* = \{\, \lambda \,\} \\
   & \varnothing^+ = \varnothing
 \end{align*}
-\subsection{Autômatos}
-\label{sec:orgaefb11e}
+\section{Autômatos}
+\label{sec:org5607de7}
+\subsection{Determinísticos}
+\label{sec:org9bef582}
 Um autômato finito determinístico é definido por:
 \begin{align*}
   & Q && \text{Um conjunto finito de estados.} \\
@@ -86,15 +88,16 @@ Um autômato finito determinístico é definido por:
   & q_o \in Q && \text{Um estado inicial.} \\
   & F \subseteq Q && \text{Um conjunto de estados finais.}
 \end{align*}
-Notação:
+\textbf{Notação}:
 \begin{align*}
   & L(M) = A \qquad \text{A linguagem reconhecida pelo autômato $M$.} \\[5pt]
   & L(M: F = \varnothing) = \varnothing \\[5pt]
   & \hat{\delta}(e, w): \text{aplicação sucessiva de }\delta\text{ aos símbolos de }w.
 \end{align*}
 \subsubsection{Computação}
-\label{sec:orgf450fc4}
-Seja \(M = (Q,\, \Sigma,\, \delta,\, q_0,\, F)\) um autômato finito, e \(w \in \Sigma^*\).
+\label{sec:org568e774}
+Seja \(M = (Q,\, \Sigma,\, \delta,\, q_0,\, F)\) um autômato finito determinístico, e \(w
+    \in \Sigma^*\). \\
 Dizemos que \(M\) aceita \(w\) se existe uma \textbf{sequência} de estados
 \(r_1, \,\hdots,\, r_n \in Q\) satisfazendo:
 \begin{enumerate}
@@ -105,27 +108,59 @@ Dizemos que \(M\) aceita \(w\) se existe uma \textbf{sequência} de estados
 Um autômato \(M\) reconhece uma linguagem \(L\) se \(\forall\, w \in L: M \text{ aceita } w\). \\
 Uma linguagem é regular se existe um autômato finito que a reconhece.
 \subsubsection{Minimização de estados}
-\label{sec:orgd357e0e}
+\label{sec:orgff1758c}
 Dois estados \(e\) e \(e'\) são \textbf{equivalentes} se
 \[
   \hat{\delta}(e, w) \in F \iff \hat{\delta}(e', w) \in F
 \]
 O algoritmo de minimização, então, é:
 \begin{enumerate}
-\item Produza uma partição \(\mathcal{P}_0 = \{F,\, Q - F\}\) do conjunto de estados \(Q\),
+\item Produza uma partição \(P_0 = \{F,\, Q - F\}\) do conjunto de estados \(Q\),
 em que os estados finais estão separados dos não finais.
-\item Para cada bloco de estados \(B\) na partição \(\mathcal{P}_i\), cada símbolo \(s\) do
+\item Para cada bloco de estados \(B\) na partição \(#+latex_header: \set[margin=2cm]{geometry}P_i\), cada símbolo \(s\) do
 alfabeto \(\Sigma\), e cada par de estados (\(e\), \(e'\)) contidos no bloco B:
 \begin{enumerate}
 \item Sejam \(d = \delta(e, s)\) e \(d' = \delta(e' , s)\) os estados para os quais o AFD
 transita quando lê o sı́mbolo \(s\) a partir dos estados \(e\) e \(e'\), respectivamente.
-\item Se \(d\) e \(d'\) pertencem a blocos diferentes na partiçãoo \(\mathcal{P}_i\), então
+\item Se \(d\) e \(d'\) pertencem a blocos diferentes na partiçãoo \(P_i\), então
 os estados \(e\) e \(e'\) não são equivalentes, e devem ser separados na partição
-\(\mathcal{P}_{i+1}\).
+\(P_{i+1}\).
 \end{enumerate}
-\item Se a partição \(\mathcal{P}_{i+1}\) for diferente da partiçãoo \(\mathcal{P}_i\),
+\item Se a partição \(P_{i+1}\) for diferente da partiçãoo \(P_i\),
 repita o passo 2.
 \item O autômato mínimo é construído de tal forma que seus estados são os blocos da
-última partição \(\mathcal{P}\) produzida.
+última partição \(P\) produzida.
 \end{enumerate}
+\subsection{Não determinísticos}
+\label{sec:orgab42f1b}
+Um autômato finito determinístico é definido por:
+\begin{align*}
+  & Q && \text{Um conjunto finito de estados.} \\
+  & \Sigma && \text{Um alfabeto finito.} \\
+  & \delta: Q \times \Sigma \to \mathcal{P}(Q) && \text{Uma função de transição.} \\
+  & I \subseteq Q && \text{Um conjunto de estados iniciais.} \\
+  & F \subseteq Q && \text{Um conjunto de estados finais.}
+\end{align*}
+Ainda, no AFN existe um estado especial, denonimado \(\emptyset\), para o qual não se
+transita. \\
+Sendo \(a \in \Sigma\) um símbolo, e \(w \in \Sigma^*\) uma palavra, define-se a função de
+transição estendida:
+\begin{align*}
+  & \hat{\delta}(\emptyset,\, w) = \{\emptyset\} \\[5pt]
+  & \hat{\delta}(X,\, \lambda) = X \\[5pt]
+  & \hat{\delta}(X,\, aw) = \hat{\delta}\left(\,\bigcup_{l \in X} \delta(l,\, a),\, w \right)
+\end{align*}
+\textbf{Teorema}: Todo AFN possui um AFD equivalente. \\
+Por construção:
+\begin{align*}
+  & Q = \mathcal{P}(Q_{\text{afn}}) && \\
+  & \Sigma = \Sigma_{\text{afn}} && \\
+  & \delta(X, a) = \bigcup_{l \in X} \delta_{\text{afn}}(l,\, a) && \\
+  & q_o = I_{\text{afn}} && \\
+  & F = \left\{ X \subseteq Q_{\text{afn}} \,\mid\, X \cap F \neq \varnothing \right\}&&
+\end{align*}
+\subsubsection{Transições \(\lambda\)}
+\label{sec:org7dfc34f}
+Um autômato finito não determinístico com transições \(\lambda\) introduz a
+possibilidade de transições sem a consumação de símbolos.
 \end{document}
