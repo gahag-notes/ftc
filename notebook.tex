@@ -1,4 +1,4 @@
-% Created 2019-04-02 Tue 20:30
+% Created 2019-04-04 Thu 20:33
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -16,6 +16,7 @@
 \usepackage{hyperref}
 \usepackage{minted}
 \usepackage[margin=2cm]{geometry}
+\usepackage{enumitem}
 \DeclareMathOperator{\sign}{sign}
 \setlength{\parindent}{0cm}
 \date{\today}
@@ -30,18 +31,18 @@
 \begin{document}
 
 
-\section{Linguagens formais}
-\label{sec:org99c85d6}
+\section{Linguagens regulares}
+\label{sec:org4620d0c}
 \subsection{Alfabetos}
-\label{sec:org3b1f744}
+\label{sec:orgccb22de}
 Um alfabeto é denotado por \(\Sigma\). Exemplos:
-\begin{align*}
-  & \Sigma = \{\, 0, 1 \,\} \\
-  & \Sigma = \{\, \text{a}, \text{b}, \text{c}, \text{d}, \text{e} \,\} \\
-  & \Sigma = \{\, \triangle, \text{O}, \square, \text{X} \,\}
-\end{align*}
+\[
+  \Sigma = \{\, 0, 1 \,\} \qquad
+  \Sigma = \{\, \text{a}, \text{b}, \text{c}, \text{d}, \text{e} \,\} \qquad
+  \Sigma = \{\, \triangle, \text{O}, \square, \text{X} \,\}
+\]
 \subsection{Palavras}
-\label{sec:org17cde05}
+\label{sec:org07ad246}
 Uma palavra (ou cadeia) é uma sequência de zero ou mais símbolos do alfabeto.
 \\[5pt]
 \textbf{Notação}:
@@ -52,18 +53,17 @@ Uma palavra (ou cadeia) é uma sequência de zero ou mais símbolos do alfabeto.
   & \Sigma^* = \bigcup_{i \in \mathbb{N}} \Sigma^i \quad \text{conjunto de todas as possíveis palavras deste alfabeto.}
 \end{align*}
 \textbf{Concatenação}:
-\begin{align*}
-  & x = 00 \\
-  & y = 11 \\
-  & xy = 0011
-\end{align*}
+\begin{gather*}
+  x = 00 \qquad y = 11 \\
+  xy = 0011
+\end{gather*}
 \textbf{Reverso}:
 \[
   (xy)^{\text{R}} = 1100
 \]
 Observação: uma palavra \(w\) é um palíndromo se, e somente se \(w^{\text{R}} = w\).
 \subsection{Linguagens}
-\label{sec:org75c1770}
+\label{sec:orgb8cd44d}
 Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\). \\[5pt]
 \textbf{Operações}:
 \[ L_1L_2 = \{\, xy \,\mid\, x \in L_1,\, y \in L_2 \,\} \\ \]
@@ -76,10 +76,18 @@ Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\). \\[5pt]
   & \varnothing^* = \{\, \lambda \,\} \\
   & \varnothing^+ = \varnothing
 \end{align*}
+\textbf{Teorema}: As linguagens regulares são fechadas sob as seguintes operações
+\begin{itemize}[itemsep=0pt]
+\item União
+\item Interseção
+\item Complemento
+\item Concatenação
+\item Fecho de Kleene
+\end{itemize}
 \section{Autômatos}
-\label{sec:org5607de7}
+\label{sec:org3399f74}
 \subsection{Determinísticos}
-\label{sec:org9bef582}
+\label{sec:orga7f8d9b}
 Um autômato finito determinístico é definido por:
 \begin{align*}
   & Q && \text{Um conjunto finito de estados.} \\
@@ -95,7 +103,7 @@ Um autômato finito determinístico é definido por:
   & \hat{\delta}(e, w): \text{aplicação sucessiva de }\delta\text{ aos símbolos de }w.
 \end{align*}
 \subsubsection{Computação}
-\label{sec:org568e774}
+\label{sec:orgf5573af}
 Seja \(M = (Q,\, \Sigma,\, \delta,\, q_0,\, F)\) um autômato finito determinístico, e \(w
     \in \Sigma^*\). \\
 Dizemos que \(M\) aceita \(w\) se existe uma \textbf{sequência} de estados
@@ -108,7 +116,7 @@ Dizemos que \(M\) aceita \(w\) se existe uma \textbf{sequência} de estados
 Um autômato \(M\) reconhece uma linguagem \(L\) se \(\forall\, w \in L: M \text{ aceita } w\). \\
 Uma linguagem é regular se existe um autômato finito que a reconhece.
 \subsubsection{Minimização de estados}
-\label{sec:orgff1758c}
+\label{sec:org75b6356}
 Dois estados \(e\) e \(e'\) são \textbf{equivalentes} se
 \[
   \hat{\delta}(e, w) \in F \iff \hat{\delta}(e', w) \in F
@@ -132,7 +140,7 @@ repita o passo 2.
 última partição \(P\) produzida.
 \end{enumerate}
 \subsection{Não determinísticos}
-\label{sec:orgab42f1b}
+\label{sec:org60f4853}
 Um autômato finito determinístico é definido por:
 \begin{align*}
   & Q && \text{Um conjunto finito de estados.} \\
@@ -160,7 +168,57 @@ Por construção:
   & F = \left\{ X \subseteq Q_{\text{afn}} \,\mid\, X \cap F \neq \varnothing \right\}&&
 \end{align*}
 \subsubsection{Transições \(\lambda\)}
-\label{sec:org7dfc34f}
+\label{sec:orged97219}
 Um autômato finito não determinístico com transições \(\lambda\) introduz a
 possibilidade de transições sem a consumação de símbolos.
+\begin{align*}
+  & Q = Q_{\text{afn}} && \\
+  & \Sigma = \Sigma_{\text{afn}} && \\
+  & \delta: Q \times \Sigma_{\lambda} \to \mathcal{P}(Q) && \\
+  & I = I_{\text{afn}} && \\
+  & F = F_{\text{afn}} &&
+\end{align*}
+Onde \(\Sigma_{\lambda} = \Sigma \cup \{\lambda\}\). \\[10pt]
+Os estados para os quais se transita sem consumir símbolos é definido pelo fecho \(\lambda\):
+\[
+  \mathcal{F}_{\lambda}: \mathcal{P}(Q) \to \mathcal{P}(Q)
+\]
+\textbf{Teorema}: O fecho lambda de um estado é pelo menos o próprio estado.
+\[
+  \forall\, X \in Q: X \in \mathcal{F}_{\lambda}(\{X\})
+\]
+Assim, define-se a função de transição estendida:
+\begin{align*}
+  & \hat{\delta}: Q \times \Sigma_{\lambda} \to \mathcal{P}(Q) \\
+  & \hat{\delta}(\varnothing, w) = \varnothing \\
+  & \hat{\delta}(X, \lambda) = \mathcal{F}_{\lambda}(X) \\
+  & \hat{\delta}(X, ay) = \hat{\delta} \left( \bigcup_{Y \in\, \mathcal{F}_{\lambda}(X)} \delta(Y, a),\enspace y \right)
+\end{align*}
+\textbf{Teorema}: Todo AFN\(\lambda\) possui um AFN equivalente. \\
+Por construção:
+\begin{align*}
+  & Q = Q_{\text{afn}\lambda} && \\
+  & \Sigma = \Sigma_{\text{afn}\lambda} && \\
+  & \delta = \mathcal{F}_{\lambda} \circ \delta_{\text{afn}\lambda} && \\
+  & I = \mathcal{F}_{\lambda}\left(I_{\text{afn}\lambda}\right) && \\
+  & F = F_{\text{afn}\lambda} &&
+\end{align*}
+\section{Expressões regulares}
+\label{sec:org20fc6d9}
+Uma expressão regular pode ser uma das seguintes formas, cada qual com a linguagem
+correspondente:
+\begin{align*}
+  & \lambda & \{\lambda\} && \\
+  & \varnothing & \varnothing && \\
+  & a & \{a\} && \\
+  & R_1 + R_2 & L(R_1) \cup L(R_2)  && \\
+  & R_1 R_2 & L(R_1) \cdot L(R_2)  && \\
+  & R^* & L(R)^* 
+\end{align*}
+\textbf{Operações}:
+\begin{align*}
+  & R^+ = RR^* && \\
+  & R^0 = \lambda && \\
+  & R^n = RR^{(n - 1)} &&
+\end{align*}
 \end{document}
