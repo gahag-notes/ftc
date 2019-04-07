@@ -62,7 +62,7 @@
    - Complemento
    - Concatenação
    - Fecho de Kleene
-* Autômatos
+* Autômatos finitos
 ** Determinísticos
    Um autômato finito determinístico é definido por:
    #+begin_export latex
@@ -79,6 +79,7 @@
    \begin{align*}
      & L(M) = A \qquad \text{A linguagem reconhecida pelo autômato $M$.} \\[5pt]
      & L(M: F = \varnothing) = \varnothing \\[5pt]
+     & \hat{\delta}: Q \times \Sigma^* \to Q \\
      & \hat{\delta}(e, w): \text{aplicação sucessiva de }\delta\text{ aos símbolos de }w.
    \end{align*}
    #+end_export
@@ -114,7 +115,7 @@
     4. O autômato mínimo é construído de tal forma que seus estados são os blocos da
        última partição $P$ produzida.
 ** Não determinísticos
-   Um autômato finito determinístico é definido por:
+   Um autômato finito não determinístico é definido por:
    #+begin_export latex
    \begin{align*}
      & Q && \text{Um conjunto finito de estados.} \\
@@ -130,6 +131,7 @@
    transição estendida:
    #+begin_export latex
    \begin{align*}
+     & \hat{\delta}: Q \times \Sigma^* \to \mathcal{P}(Q) \\
      & \hat{\delta}(\emptyset,\, w) = \{\emptyset\} \\[5pt]
      & \hat{\delta}(X,\, \lambda) = X \\[5pt]
      & \hat{\delta}(X,\, aw) = \hat{\delta}\left(\,\bigcup_{l \in X} \delta(l,\, a),\, w \right)
@@ -174,7 +176,7 @@
     Assim, define-se a função de transição estendida:
     #+begin_export latex
     \begin{align*}
-      & \hat{\delta}: Q \times \Sigma_{\lambda} \to \mathcal{P}(Q) \\
+      & \hat{\delta}: Q \times \Sigma_{\lambda}^* \to \mathcal{P}(Q) \\
       & \hat{\delta}(\varnothing, w) = \varnothing \\
       & \hat{\delta}(X, \lambda) = \mathcal{F}_{\lambda}(X) \\
       & \hat{\delta}(X, ay) = \hat{\delta} \left( \bigcup_{Y \in\, \mathcal{F}_{\lambda}(X)} \delta(Y, a),\enspace y \right)

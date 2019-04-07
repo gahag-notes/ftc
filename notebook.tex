@@ -1,4 +1,4 @@
-% Created 2019-04-04 Thu 20:33
+% Created 2019-04-06 Sat 15:09
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,9 +32,9 @@
 
 
 \section{Linguagens regulares}
-\label{sec:org4620d0c}
+\label{sec:orga698f1b}
 \subsection{Alfabetos}
-\label{sec:orgccb22de}
+\label{sec:org236ce02}
 Um alfabeto é denotado por \(\Sigma\). Exemplos:
 \[
   \Sigma = \{\, 0, 1 \,\} \qquad
@@ -42,7 +42,7 @@ Um alfabeto é denotado por \(\Sigma\). Exemplos:
   \Sigma = \{\, \triangle, \text{O}, \square, \text{X} \,\}
 \]
 \subsection{Palavras}
-\label{sec:org07ad246}
+\label{sec:orgd37852d}
 Uma palavra (ou cadeia) é uma sequência de zero ou mais símbolos do alfabeto.
 \\[5pt]
 \textbf{Notação}:
@@ -63,7 +63,7 @@ Uma palavra (ou cadeia) é uma sequência de zero ou mais símbolos do alfabeto.
 \]
 Observação: uma palavra \(w\) é um palíndromo se, e somente se \(w^{\text{R}} = w\).
 \subsection{Linguagens}
-\label{sec:orgb8cd44d}
+\label{sec:orgb9bb77d}
 Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\). \\[5pt]
 \textbf{Operações}:
 \[ L_1L_2 = \{\, xy \,\mid\, x \in L_1,\, y \in L_2 \,\} \\ \]
@@ -84,10 +84,10 @@ Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\). \\[5pt]
 \item Concatenação
 \item Fecho de Kleene
 \end{itemize}
-\section{Autômatos}
-\label{sec:org3399f74}
+\section{Autômatos finitos}
+\label{sec:org4733216}
 \subsection{Determinísticos}
-\label{sec:orga7f8d9b}
+\label{sec:orge8d5066}
 Um autômato finito determinístico é definido por:
 \begin{align*}
   & Q && \text{Um conjunto finito de estados.} \\
@@ -100,10 +100,11 @@ Um autômato finito determinístico é definido por:
 \begin{align*}
   & L(M) = A \qquad \text{A linguagem reconhecida pelo autômato $M$.} \\[5pt]
   & L(M: F = \varnothing) = \varnothing \\[5pt]
+  & \hat{\delta}: Q \times \Sigma^* \to Q \\
   & \hat{\delta}(e, w): \text{aplicação sucessiva de }\delta\text{ aos símbolos de }w.
 \end{align*}
 \subsubsection{Computação}
-\label{sec:orgf5573af}
+\label{sec:orgbc15d03}
 Seja \(M = (Q,\, \Sigma,\, \delta,\, q_0,\, F)\) um autômato finito determinístico, e \(w
     \in \Sigma^*\). \\
 Dizemos que \(M\) aceita \(w\) se existe uma \textbf{sequência} de estados
@@ -116,7 +117,7 @@ Dizemos que \(M\) aceita \(w\) se existe uma \textbf{sequência} de estados
 Um autômato \(M\) reconhece uma linguagem \(L\) se \(\forall\, w \in L: M \text{ aceita } w\). \\
 Uma linguagem é regular se existe um autômato finito que a reconhece.
 \subsubsection{Minimização de estados}
-\label{sec:org75b6356}
+\label{sec:org47fc8cd}
 Dois estados \(e\) e \(e'\) são \textbf{equivalentes} se
 \[
   \hat{\delta}(e, w) \in F \iff \hat{\delta}(e', w) \in F
@@ -140,8 +141,8 @@ repita o passo 2.
 última partição \(P\) produzida.
 \end{enumerate}
 \subsection{Não determinísticos}
-\label{sec:org60f4853}
-Um autômato finito determinístico é definido por:
+\label{sec:orgffe5275}
+Um autômato finito não determinístico é definido por:
 \begin{align*}
   & Q && \text{Um conjunto finito de estados.} \\
   & \Sigma && \text{Um alfabeto finito.} \\
@@ -154,6 +155,7 @@ transita. \\
 Sendo \(a \in \Sigma\) um símbolo, e \(w \in \Sigma^*\) uma palavra, define-se a função de
 transição estendida:
 \begin{align*}
+  & \hat{\delta}: Q \times \Sigma^* \to \mathcal{P}(Q) \\
   & \hat{\delta}(\emptyset,\, w) = \{\emptyset\} \\[5pt]
   & \hat{\delta}(X,\, \lambda) = X \\[5pt]
   & \hat{\delta}(X,\, aw) = \hat{\delta}\left(\,\bigcup_{l \in X} \delta(l,\, a),\, w \right)
@@ -168,7 +170,7 @@ Por construção:
   & F = \left\{ X \subseteq Q_{\text{afn}} \,\mid\, X \cap F \neq \varnothing \right\}&&
 \end{align*}
 \subsubsection{Transições \(\lambda\)}
-\label{sec:orged97219}
+\label{sec:orgadf8797}
 Um autômato finito não determinístico com transições \(\lambda\) introduz a
 possibilidade de transições sem a consumação de símbolos.
 \begin{align*}
@@ -189,7 +191,7 @@ Os estados para os quais se transita sem consumir símbolos é definido pelo fec
 \]
 Assim, define-se a função de transição estendida:
 \begin{align*}
-  & \hat{\delta}: Q \times \Sigma_{\lambda} \to \mathcal{P}(Q) \\
+  & \hat{\delta}: Q \times \Sigma_{\lambda}^* \to \mathcal{P}(Q) \\
   & \hat{\delta}(\varnothing, w) = \varnothing \\
   & \hat{\delta}(X, \lambda) = \mathcal{F}_{\lambda}(X) \\
   & \hat{\delta}(X, ay) = \hat{\delta} \left( \bigcup_{Y \in\, \mathcal{F}_{\lambda}(X)} \delta(Y, a),\enspace y \right)
@@ -204,7 +206,7 @@ Por construção:
   & F = F_{\text{afn}\lambda} &&
 \end{align*}
 \section{Expressões regulares}
-\label{sec:org20fc6d9}
+\label{sec:org2f6f74f}
 Uma expressão regular pode ser uma das seguintes formas, cada qual com a linguagem
 correspondente:
 \begin{align*}
