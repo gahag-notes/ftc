@@ -1,4 +1,4 @@
-% Created 2019-04-06 Sat 15:09
+% Created 2019-04-09 Tue 19:51
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,9 +32,9 @@
 
 
 \section{Linguagens regulares}
-\label{sec:orga698f1b}
+\label{sec:org3af1012}
 \subsection{Alfabetos}
-\label{sec:org236ce02}
+\label{sec:org62c62e2}
 Um alfabeto é denotado por \(\Sigma\). Exemplos:
 \[
   \Sigma = \{\, 0, 1 \,\} \qquad
@@ -42,7 +42,7 @@ Um alfabeto é denotado por \(\Sigma\). Exemplos:
   \Sigma = \{\, \triangle, \text{O}, \square, \text{X} \,\}
 \]
 \subsection{Palavras}
-\label{sec:orgd37852d}
+\label{sec:orge6a81b5}
 Uma palavra (ou cadeia) é uma sequência de zero ou mais símbolos do alfabeto.
 \\[5pt]
 \textbf{Notação}:
@@ -63,7 +63,7 @@ Uma palavra (ou cadeia) é uma sequência de zero ou mais símbolos do alfabeto.
 \]
 Observação: uma palavra \(w\) é um palíndromo se, e somente se \(w^{\text{R}} = w\).
 \subsection{Linguagens}
-\label{sec:orgb9bb77d}
+\label{sec:org9df928e}
 Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\). \\[5pt]
 \textbf{Operações}:
 \[ L_1L_2 = \{\, xy \,\mid\, x \in L_1,\, y \in L_2 \,\} \\ \]
@@ -85,9 +85,9 @@ Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\). \\[5pt]
 \item Fecho de Kleene
 \end{itemize}
 \section{Autômatos finitos}
-\label{sec:org4733216}
+\label{sec:orge45edcb}
 \subsection{Determinísticos}
-\label{sec:orge8d5066}
+\label{sec:orge0bd11c}
 Um autômato finito determinístico é definido por:
 \begin{align*}
   & Q && \text{Um conjunto finito de estados.} \\
@@ -103,8 +103,10 @@ Um autômato finito determinístico é definido por:
   & \hat{\delta}: Q \times \Sigma^* \to Q \\
   & \hat{\delta}(e, w): \text{aplicação sucessiva de }\delta\text{ aos símbolos de }w.
 \end{align*}
+Ainda, nos autômatos existe um estado especial, denonimado \(\emptyset\), que aprisiona
+todas as transições omitidas.
 \subsubsection{Computação}
-\label{sec:orgbc15d03}
+\label{sec:orgdd0108a}
 Seja \(M = (Q,\, \Sigma,\, \delta,\, q_0,\, F)\) um autômato finito determinístico, e \(w
     \in \Sigma^*\). \\
 Dizemos que \(M\) aceita \(w\) se existe uma \textbf{sequência} de estados
@@ -117,16 +119,16 @@ Dizemos que \(M\) aceita \(w\) se existe uma \textbf{sequência} de estados
 Um autômato \(M\) reconhece uma linguagem \(L\) se \(\forall\, w \in L: M \text{ aceita } w\). \\
 Uma linguagem é regular se existe um autômato finito que a reconhece.
 \subsubsection{Minimização de estados}
-\label{sec:org47fc8cd}
+\label{sec:org6336f02}
 Dois estados \(e\) e \(e'\) são \textbf{equivalentes} se
 \[
   \hat{\delta}(e, w) \in F \iff \hat{\delta}(e', w) \in F
 \]
 O algoritmo de minimização, então, é:
 \begin{enumerate}
-\item Produza uma partição \(P_0 = \{F,\, Q - F\}\) do conjunto de estados \(Q\),
-em que os estados finais estão separados dos não finais.
-\item Para cada bloco de estados \(B\) na partição \(#+latex_header: \set[margin=2cm]{geometry}P_i\), cada símbolo \(s\) do
+\item Produza uma partição \(P_0 = \{F,\, Q - F\}\) de \(Q\), separando os estados finais dos
+não finais.
+\item Para cada bloco de estados \(B\) na partição \(P_i\), cada símbolo \(s\) do
 alfabeto \(\Sigma\), e cada par de estados (\(e\), \(e'\)) contidos no bloco B:
 \begin{enumerate}
 \item Sejam \(d = \delta(e, s)\) e \(d' = \delta(e' , s)\) os estados para os quais o AFD
@@ -141,7 +143,7 @@ repita o passo 2.
 última partição \(P\) produzida.
 \end{enumerate}
 \subsection{Não determinísticos}
-\label{sec:orgffe5275}
+\label{sec:orgbdc6511}
 Um autômato finito não determinístico é definido por:
 \begin{align*}
   & Q && \text{Um conjunto finito de estados.} \\
@@ -150,8 +152,6 @@ Um autômato finito não determinístico é definido por:
   & I \subseteq Q && \text{Um conjunto de estados iniciais.} \\
   & F \subseteq Q && \text{Um conjunto de estados finais.}
 \end{align*}
-Ainda, no AFN existe um estado especial, denonimado \(\emptyset\), para o qual não se
-transita. \\
 Sendo \(a \in \Sigma\) um símbolo, e \(w \in \Sigma^*\) uma palavra, define-se a função de
 transição estendida:
 \begin{align*}
@@ -170,7 +170,7 @@ Por construção:
   & F = \left\{ X \subseteq Q_{\text{afn}} \,\mid\, X \cap F \neq \varnothing \right\}&&
 \end{align*}
 \subsubsection{Transições \(\lambda\)}
-\label{sec:orgadf8797}
+\label{sec:org7ab4abb}
 Um autômato finito não determinístico com transições \(\lambda\) introduz a
 possibilidade de transições sem a consumação de símbolos.
 \begin{align*}
@@ -206,7 +206,7 @@ Por construção:
   & F = F_{\text{afn}\lambda} &&
 \end{align*}
 \section{Expressões regulares}
-\label{sec:org2f6f74f}
+\label{sec:orgb352b86}
 Uma expressão regular pode ser uma das seguintes formas, cada qual com a linguagem
 correspondente:
 \begin{align*}

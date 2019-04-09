@@ -83,9 +83,11 @@
      & \hat{\delta}(e, w): \text{aplicação sucessiva de }\delta\text{ aos símbolos de }w.
    \end{align*}
    #+end_export
+   Ainda, nos autômatos existe um estado especial, denonimado $\emptyset$, que aprisiona
+   todas as transições omitidas.
 *** Computação
     Seja $M = (Q,\, \Sigma,\, \delta,\, q_0,\, F)$ um autômato finito determinístico, e $w
-    \in \Sigma^*$. @@latex:\\@@
+    \in \Sigma^*$. \\
     Dizemos que $M$ aceita $w$ se existe uma *sequência* de estados
     $r_1, \,\hdots,\, r_n \in Q$ satisfazendo:
     1. $r_0 = q_0$
@@ -101,9 +103,9 @@
     \]
     #+end_export
     O algoritmo de minimização, então, é:
-    1. Produza uma partição $P_0 = \{F,\, Q - F\}$ do conjunto de estados $Q$,
-       em que os estados finais estão separados dos não finais.
-    2. Para cada bloco de estados $B$ na partição $#+latex_header: \set[margin=2cm]{geometry}P_i$, cada símbolo $s$ do
+    1. Produza uma partição $P_0 = \{F,\, Q - F\}$ de $Q$, separando os estados finais dos
+       não finais.
+    2. Para cada bloco de estados $B$ na partição $P_i$, cada símbolo $s$ do
        alfabeto $\Sigma$, e cada par de estados ($e$, $e'$) contidos no bloco B:
        a. Sejam $d = \delta(e, s)$ e $d' = \delta(e' , s)$ os estados para os quais o AFD
           transita quando lê o sı́mbolo $s$ a partir dos estados $e$ e $e'$, respectivamente.
@@ -125,8 +127,6 @@
      & F \subseteq Q && \text{Um conjunto de estados finais.}
    \end{align*}
    #+end_export
-   Ainda, no AFN existe um estado especial, denonimado $\emptyset$, para o qual não se
-   transita. @@latex:\\@@
    Sendo $a \in \Sigma$ um símbolo, e $w \in \Sigma^*$ uma palavra, define-se a função de
    transição estendida:
    #+begin_export latex
@@ -137,7 +137,7 @@
      & \hat{\delta}(X,\, aw) = \hat{\delta}\left(\,\bigcup_{l \in X} \delta(l,\, a),\, w \right)
    \end{align*}
    #+end_export
-   *Teorema*: Todo AFN possui um AFD equivalente. @@latex:\\@@
+   *Teorema*: Todo AFN possui um AFD equivalente. \\
    Por construção:
    #+begin_export latex
    \begin{align*}
@@ -182,7 +182,7 @@
       & \hat{\delta}(X, ay) = \hat{\delta} \left( \bigcup_{Y \in\, \mathcal{F}_{\lambda}(X)} \delta(Y, a),\enspace y \right)
     \end{align*}
     #+end_export
-    *Teorema*: Todo AFN$\lambda$ possui um AFN equivalente. @@latex:\\@@
+    *Teorema*: Todo AFN$\lambda$ possui um AFN equivalente. \\
     Por construção:
     #+begin_export latex
     \begin{align*}
