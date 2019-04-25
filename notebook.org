@@ -214,3 +214,17 @@
     & R^n = RR^{(n - 1)} &&
   \end{align*}
   #+end_export
+* Linguagens irregulares
+  Nas linguagens regulares, têm se o *lema do bombardeamento*: \\
+  Seja $L$ uma linguagem regular
+  #+begin_export latex
+  \begin{align*}
+    & \exists\, k \in \mathbb{N}^*: \\
+    & \quad \forall\, z \in L, |z| \geq k : \\
+    & \quad\quad \exists\, u, v, w: \\
+    & \quad\quad\quad 1.\> z = uvw \\
+    & \quad\quad\quad 2.\> |uv| \leq k \\
+    & \quad\quad\quad 3.\> v \neq \lambda \\
+    & \quad\quad\quad 4.\> \forall i \geq 0: uv^iw \in L
+  \end{align*}
+  #+end_export

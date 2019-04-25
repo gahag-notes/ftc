@@ -1,4 +1,4 @@
-% Created 2019-04-09 Tue 19:51
+% Created 2019-04-25 Thu 20:31
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -26,15 +26,15 @@
  pdftitle={},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 26.1 (Org mode 9.2.2)}, 
+ pdfcreator={Emacs 26.2 (Org mode 9.2.3)}, 
  pdflang={English}}
 \begin{document}
 
 
 \section{Linguagens regulares}
-\label{sec:org3af1012}
+\label{sec:org6db8604}
 \subsection{Alfabetos}
-\label{sec:org62c62e2}
+\label{sec:org7e31ccd}
 Um alfabeto é denotado por \(\Sigma\). Exemplos:
 \[
   \Sigma = \{\, 0, 1 \,\} \qquad
@@ -42,7 +42,7 @@ Um alfabeto é denotado por \(\Sigma\). Exemplos:
   \Sigma = \{\, \triangle, \text{O}, \square, \text{X} \,\}
 \]
 \subsection{Palavras}
-\label{sec:orge6a81b5}
+\label{sec:orgd2a30e8}
 Uma palavra (ou cadeia) é uma sequência de zero ou mais símbolos do alfabeto.
 \\[5pt]
 \textbf{Notação}:
@@ -63,7 +63,7 @@ Uma palavra (ou cadeia) é uma sequência de zero ou mais símbolos do alfabeto.
 \]
 Observação: uma palavra \(w\) é um palíndromo se, e somente se \(w^{\text{R}} = w\).
 \subsection{Linguagens}
-\label{sec:org9df928e}
+\label{sec:org7ed1afc}
 Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\). \\[5pt]
 \textbf{Operações}:
 \[ L_1L_2 = \{\, xy \,\mid\, x \in L_1,\, y \in L_2 \,\} \\ \]
@@ -85,9 +85,9 @@ Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\). \\[5pt]
 \item Fecho de Kleene
 \end{itemize}
 \section{Autômatos finitos}
-\label{sec:orge45edcb}
+\label{sec:org9397774}
 \subsection{Determinísticos}
-\label{sec:orge0bd11c}
+\label{sec:org251a86d}
 Um autômato finito determinístico é definido por:
 \begin{align*}
   & Q && \text{Um conjunto finito de estados.} \\
@@ -106,7 +106,7 @@ Um autômato finito determinístico é definido por:
 Ainda, nos autômatos existe um estado especial, denonimado \(\emptyset\), que aprisiona
 todas as transições omitidas.
 \subsubsection{Computação}
-\label{sec:orgdd0108a}
+\label{sec:orga2d4ffa}
 Seja \(M = (Q,\, \Sigma,\, \delta,\, q_0,\, F)\) um autômato finito determinístico, e \(w
     \in \Sigma^*\). \\
 Dizemos que \(M\) aceita \(w\) se existe uma \textbf{sequência} de estados
@@ -119,7 +119,7 @@ Dizemos que \(M\) aceita \(w\) se existe uma \textbf{sequência} de estados
 Um autômato \(M\) reconhece uma linguagem \(L\) se \(\forall\, w \in L: M \text{ aceita } w\). \\
 Uma linguagem é regular se existe um autômato finito que a reconhece.
 \subsubsection{Minimização de estados}
-\label{sec:org6336f02}
+\label{sec:org1e3c37d}
 Dois estados \(e\) e \(e'\) são \textbf{equivalentes} se
 \[
   \hat{\delta}(e, w) \in F \iff \hat{\delta}(e', w) \in F
@@ -143,7 +143,7 @@ repita o passo 2.
 última partição \(P\) produzida.
 \end{enumerate}
 \subsection{Não determinísticos}
-\label{sec:orgbdc6511}
+\label{sec:org9c7066f}
 Um autômato finito não determinístico é definido por:
 \begin{align*}
   & Q && \text{Um conjunto finito de estados.} \\
@@ -170,7 +170,7 @@ Por construção:
   & F = \left\{ X \subseteq Q_{\text{afn}} \,\mid\, X \cap F \neq \varnothing \right\}&&
 \end{align*}
 \subsubsection{Transições \(\lambda\)}
-\label{sec:org7ab4abb}
+\label{sec:org1f8be15}
 Um autômato finito não determinístico com transições \(\lambda\) introduz a
 possibilidade de transições sem a consumação de símbolos.
 \begin{align*}
@@ -206,7 +206,7 @@ Por construção:
   & F = F_{\text{afn}\lambda} &&
 \end{align*}
 \section{Expressões regulares}
-\label{sec:orgb352b86}
+\label{sec:org2d9c084}
 Uma expressão regular pode ser uma das seguintes formas, cada qual com a linguagem
 correspondente:
 \begin{align*}
@@ -222,5 +222,18 @@ correspondente:
   & R^+ = RR^* && \\
   & R^0 = \lambda && \\
   & R^n = RR^{(n - 1)} &&
+\end{align*}
+\section{Linguagens irregulares}
+\label{sec:org51217b7}
+Nas linguagens regulares, têm se o \textbf{lema do bombardeamento}: \\
+Seja \(L\) uma linguagem regular
+\begin{align*}
+  & \exists\, k \in \mathbb{N}^*: \\
+  & \quad \forall\, z \in L, |z| \geq k : \\
+  & \quad\quad \exists\, u, v, w: \\
+  & \quad\quad\quad 1.\> z = uvw \\
+  & \quad\quad\quad 2.\> |uv| \leq k \\
+  & \quad\quad\quad 3.\> v \neq \lambda \\
+  & \quad\quad\quad 4.\> \forall i \geq 0: uv^iw \in L
 \end{align*}
 \end{document}
