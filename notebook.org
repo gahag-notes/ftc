@@ -216,7 +216,7 @@
   #+end_export
 * Linguagens irregulares
   Nas linguagens regulares, têm se o *lema do bombardeamento*: \\
-  Seja $L$ uma linguagem regular
+  Se $L$ é uma linguagem regular, então
   #+begin_export latex
   \begin{align*}
     & \exists\, k \in \mathbb{N}^*: \\
@@ -225,6 +225,34 @@
     & \quad\quad\quad 1.\> z = uvw \\
     & \quad\quad\quad 2.\> |uv| \leq k \\
     & \quad\quad\quad 3.\> v \neq \lambda \\
-    & \quad\quad\quad 4.\> \forall i \geq 0: uv^iw \in L
+    & \quad\quad\quad 4.\> \forall\,i \in \mathbb{N}^*: \left(uv^iw\right) \in L
   \end{align*}
   #+end_export
+  O lema pode ser utilizado para provar que uma dada linguagem não é regular.
+* Linguagens livres de contexto
+  Uma linguagem livre de contexto é uma linguagem que pode ser denotada por uma gramática
+  livre de contexto.
+** Gramáticas livres de contexto
+   Uma gramática livre de contexto é definida por:
+   #+begin_export latex
+   \begin{align*}
+     & V && \text{Um conjunto finito de variáveis.} \\
+     & \Sigma && \text{Um alfabeto finito.} \\
+     & R && \text{Um conjunto de regras.} \\
+     & S \in V && \text{Uma variável inicial.}
+   \end{align*}
+   As regras são constituídas da seguinte forma:
+   #+end_export
+   1. O lado esquerdo de uma regra é constituído por uma única variável.
+   2. O lado direito é constituído por uma combinação de terminais e variáveis.
+   Por convenção a variável inicial é a variável alvo da primeira regra. \\
+   @@latex:\\@@
+   Exemplo:
+   #+begin_export latex
+   \begin{align*}
+     G = \big(\{A, B\}, & \, \{0, 1, 5\},\, R,\, A \big) \\
+     R: \quad & A \to 0A1 \\
+              & A \to B \\
+              & B \to 5
+   \end{align*}
+   #+end_export
