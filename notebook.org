@@ -193,6 +193,23 @@
       & F = F_{\text{afn}\lambda} &&
     \end{align*}
     #+end_export
+** Com pilha
+   Um autômato finito com pilha não determinístico é definido por:
+   #+begin_export latex
+   \begin{align*}
+     & Q && \text{Um conjunto finito de estados.} \\
+     & \Sigma && \text{Um alfabeto finito.} \\
+     & \Gamma && \text{Um alfabeto de pilha finito.} \\
+     & \delta: Q \times \Sigma_{\lambda} \times \Gamma_{\lambda} \to \mathcal{P}\left(\Gamma^* \times Q\right) && \text{Uma função de transição.} \\
+     & I \subseteq Q && \text{Um conjunto de estados iniciais.} \\
+     & F \subseteq Q && \text{Um conjunto de estados finais.}
+   \end{align*}
+   #+end_export
+   Em cada transição, o elemento do topo da pilha é retirado para a função de transição,
+   que por sua vez devolve uma sequência de elementos a serem empilhados, além do estado
+   transitado. @@latex:\\@@ \\
+   Um AFPN aceita uma palavra se ao consumí-la, encerra-se em um estado final *com a pilha
+   vazia*.
 * Expressões regulares
   Uma expressão regular pode ser uma das seguintes formas, cada qual com a linguagem
   correspondente:
@@ -245,8 +262,7 @@
    #+end_export
    1. O lado esquerdo de uma regra é constituído por uma única variável.
    2. O lado direito é constituído por uma combinação de terminais e variáveis.
-   Por convenção a variável inicial é a variável alvo da primeira regra. \\
-   @@latex:\\@@
+   Por convenção a variável inicial é a variável alvo da primeira regra. @@latex:\vspace{5pt}@@ \\
    Exemplo:
    #+begin_export latex
    \begin{align*}
@@ -256,3 +272,16 @@
               & B \to 5
    \end{align*}
    #+end_export
+   *Lema*: Para toda GLC, existe um AFPN que a reconhece.
+   #+begin_export latex
+   \begin{align*}
+     & G = (V, \Sigma, R, S) & \\
+     & M = \big( \{i, f\},\> \Sigma,\> (V \cup \Sigma),\> \delta,\> \{i\},\> \{f\} \big)
+   \end{align*}
+   \begin{align*}
+     \delta(i, \lambda, \lambda) & = \big\{ [f, S] \big\} \\
+     \delta(f, \lambda, X) & = \big\{ [f, \beta] \>\big|\> (X \to \beta) \in R \big\} \\
+     \delta(f, a, a) & = \big\{ [f, \lambda] \big\}
+   \end{align*}
+   #+end_export
+   *Lema*: Para todo AFPN, existe uma GLC equivalente.
