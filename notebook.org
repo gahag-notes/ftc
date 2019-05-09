@@ -284,4 +284,24 @@
      \delta(f, a, a) & = \big\{ [f, \lambda] \big\}
    \end{align*}
    #+end_export
-   *Lema*: Para todo AFPN, existe uma GLC equivalente.
+   *Lema*: Para todo AFPN, existe uma GLC equivalente. @@latex:\newpage@@
+   Nas linguagens livres de contexto, têm se o *lema do bombardeamento*: \\
+   Se $L$ é uma linguagem livre de contexto, então
+   #+begin_export latex
+   \begin{align*}
+     & \exists\, k \in \mathbb{N}^*: \\
+     & \quad \forall\, w \in L, |w| \geq k : \\
+     & \quad\quad \exists\, u, v, x, y, z: \\
+     & \quad\quad\quad 1.\> w = uvxyz \\
+     & \quad\quad\quad 2.\> |vxy| \leq k \\
+     & \quad\quad\quad 3.\> vy \neq \lambda \\
+     & \quad\quad\quad 4.\> \forall\,i \in \mathbb{N}^*: \left(uv^ixy^iz\right) \in L
+   \end{align*}
+   #+end_export
+   O lema pode ser utilizado para provar que uma dada linguagem não é livre de contexto.
+** Propriedade de fechamento
+   A classe das linguagens livre de contexto são fechadas sob as seguintes operações
+   #+attr_latex: :options [itemsep=0pt]
+   - União
+   - Concatenação
+   - Fecho de Kleene

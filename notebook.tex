@@ -1,4 +1,4 @@
-% Created 2019-05-07 Tue 20:26
+% Created 2019-05-09 Thu 20:21
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,9 +32,9 @@
 
 
 \section{Linguagens regulares}
-\label{sec:orge302f7a}
+\label{sec:org39f1236}
 \subsection{Alfabetos}
-\label{sec:orge915ed3}
+\label{sec:org193649a}
 Um alfabeto é denotado por \(\Sigma\). Exemplos:
 \[
   \Sigma = \{\, 0, 1 \,\} \qquad
@@ -42,7 +42,7 @@ Um alfabeto é denotado por \(\Sigma\). Exemplos:
   \Sigma = \{\, \triangle, \text{O}, \square, \text{X} \,\}
 \]
 \subsection{Palavras}
-\label{sec:orge378a6e}
+\label{sec:orgcc60a8d}
 Uma palavra (ou cadeia) é uma sequência de zero ou mais símbolos do alfabeto.
 \\[5pt]
 \textbf{Notação}:
@@ -63,7 +63,7 @@ Uma palavra (ou cadeia) é uma sequência de zero ou mais símbolos do alfabeto.
 \]
 Observação: uma palavra \(w\) é um palíndromo se, e somente se \(w^{\text{R}} = w\).
 \subsection{Linguagens}
-\label{sec:org91a5251}
+\label{sec:org73b2453}
 Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\). \\[5pt]
 \textbf{Operações}:
 \[ L_1L_2 = \{\, xy \,\mid\, x \in L_1,\, y \in L_2 \,\} \\ \]
@@ -85,9 +85,9 @@ Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\). \\[5pt]
 \item Fecho de Kleene
 \end{itemize}
 \section{Autômatos finitos}
-\label{sec:orgf32049f}
+\label{sec:org67046cd}
 \subsection{Determinísticos}
-\label{sec:org11780dd}
+\label{sec:orgf7f9af0}
 Um autômato finito determinístico é definido por:
 \begin{align*}
   & Q && \text{Um conjunto finito de estados.} \\
@@ -106,7 +106,7 @@ Um autômato finito determinístico é definido por:
 Ainda, nos autômatos existe um estado especial, denonimado \(\emptyset\), que aprisiona
 todas as transições omitidas.
 \subsubsection{Computação}
-\label{sec:orgc4b6abf}
+\label{sec:org58f7844}
 Seja \(M = (Q,\, \Sigma,\, \delta,\, q_0,\, F)\) um autômato finito determinístico, e \(w
     \in \Sigma^*\). \\
 Dizemos que \(M\) aceita \(w\) se existe uma \textbf{sequência} de estados
@@ -119,7 +119,7 @@ Dizemos que \(M\) aceita \(w\) se existe uma \textbf{sequência} de estados
 Um autômato \(M\) reconhece uma linguagem \(L\) se \(\forall\, w \in L: M \text{ aceita } w\). \\
 Uma linguagem é regular se existe um autômato finito que a reconhece.
 \subsubsection{Minimização de estados}
-\label{sec:orgf5252a9}
+\label{sec:org4d40509}
 Dois estados \(e\) e \(e'\) são \textbf{equivalentes} se
 \[
   \hat{\delta}(e, w) \in F \iff \hat{\delta}(e', w) \in F
@@ -143,7 +143,7 @@ repita o passo 2.
 última partição \(P\) produzida.
 \end{enumerate}
 \subsection{Não determinísticos}
-\label{sec:org6bbc495}
+\label{sec:org1eb1c28}
 Um autômato finito não determinístico é definido por:
 \begin{align*}
   & Q && \text{Um conjunto finito de estados.} \\
@@ -170,7 +170,7 @@ Por construção:
   & F = \left\{ X \subseteq Q_{\text{afn}} \,\mid\, X \cap F \neq \varnothing \right\}&&
 \end{align*}
 \subsubsection{Transições \(\lambda\)}
-\label{sec:org9454fbc}
+\label{sec:orgb775e0a}
 Um autômato finito não determinístico com transições \(\lambda\) introduz a
 possibilidade de transições sem a consumação de símbolos.
 \begin{align*}
@@ -206,7 +206,7 @@ Por construção:
   & F = F_{\text{afn}\lambda} &&
 \end{align*}
 \subsection{Com pilha}
-\label{sec:orgf3c635e}
+\label{sec:org87c0079}
 Um autômato finito com pilha não determinístico é definido por:
 \begin{align*}
   & Q && \text{Um conjunto finito de estados.} \\
@@ -222,7 +222,7 @@ transitado. \\ \\
 Um AFPN aceita uma palavra se ao consumí-la, encerra-se em um estado final \textbf{com a pilha
 vazia}.
 \section{Expressões regulares}
-\label{sec:org8a0ae1e}
+\label{sec:org6451e07}
 Uma expressão regular pode ser uma das seguintes formas, cada qual com a linguagem
 correspondente:
 \begin{align*}
@@ -240,7 +240,7 @@ correspondente:
   & R^n = RR^{(n - 1)} &&
 \end{align*}
 \section{Linguagens irregulares}
-\label{sec:orgd785847}
+\label{sec:org672bea9}
 Nas linguagens regulares, têm se o \textbf{lema do bombardeamento}: \\
 Se \(L\) é uma linguagem regular, então
 \begin{align*}
@@ -254,11 +254,11 @@ Se \(L\) é uma linguagem regular, então
 \end{align*}
 O lema pode ser utilizado para provar que uma dada linguagem não é regular.
 \section{Linguagens livres de contexto}
-\label{sec:org48cc3ee}
+\label{sec:orgba153b0}
 Uma linguagem livre de contexto é uma linguagem que pode ser denotada por uma gramática
 livre de contexto.
 \subsection{Gramáticas livres de contexto}
-\label{sec:orgea8f7fc}
+\label{sec:org68d324c}
 Uma gramática livre de contexto é definida por:
 \begin{align*}
   & V && \text{Um conjunto finito de variáveis.} \\
@@ -289,5 +289,25 @@ Exemplo:
   \delta(f, \lambda, X) & = \big\{ [f, \beta] \>\big|\> (X \to \beta) \in R \big\} \\
   \delta(f, a, a) & = \big\{ [f, \lambda] \big\}
 \end{align*}
-\textbf{Lema}: Para todo AFPN, existe uma GLC equivalente.
+\textbf{Lema}: Para todo AFPN, existe uma GLC equivalente. \newpage
+Nas linguagens livres de contexto, têm se o \textbf{lema do bombardeamento}: \\
+Se \(L\) é uma linguagem livre de contexto, então
+\begin{align*}
+  & \exists\, k \in \mathbb{N}^*: \\
+  & \quad \forall\, w \in L, |w| \geq k : \\
+  & \quad\quad \exists\, u, v, x, y, z: \\
+  & \quad\quad\quad 1.\> w = uvxyz \\
+  & \quad\quad\quad 2.\> |vxy| \leq k \\
+  & \quad\quad\quad 3.\> vy \neq \lambda \\
+  & \quad\quad\quad 4.\> \forall\,i \in \mathbb{N}^*: \left(uv^ixy^iz\right) \in L
+\end{align*}
+O lema pode ser utilizado para provar que uma dada linguagem não é livre de contexto.
+\subsection{Propriedade de fechamento}
+\label{sec:orgb6300c4}
+A classe das linguagens livre de contexto são fechadas sob as seguintes operações
+\begin{itemize}[itemsep=0pt]
+\item União
+\item Concatenação
+\item Fecho de Kleene
+\end{itemize}
 \end{document}
