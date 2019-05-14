@@ -1,4 +1,4 @@
-% Created 2019-05-09 Thu 20:21
+% Created 2019-05-14 Tue 20:17
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,9 +32,9 @@
 
 
 \section{Linguagens regulares}
-\label{sec:org39f1236}
+\label{sec:org9da1c8c}
 \subsection{Alfabetos}
-\label{sec:org193649a}
+\label{sec:orgbe85d54}
 Um alfabeto é denotado por \(\Sigma\). Exemplos:
 \[
   \Sigma = \{\, 0, 1 \,\} \qquad
@@ -42,7 +42,7 @@ Um alfabeto é denotado por \(\Sigma\). Exemplos:
   \Sigma = \{\, \triangle, \text{O}, \square, \text{X} \,\}
 \]
 \subsection{Palavras}
-\label{sec:orgcc60a8d}
+\label{sec:org168d103}
 Uma palavra (ou cadeia) é uma sequência de zero ou mais símbolos do alfabeto.
 \\[5pt]
 \textbf{Notação}:
@@ -63,7 +63,7 @@ Uma palavra (ou cadeia) é uma sequência de zero ou mais símbolos do alfabeto.
 \]
 Observação: uma palavra \(w\) é um palíndromo se, e somente se \(w^{\text{R}} = w\).
 \subsection{Linguagens}
-\label{sec:org73b2453}
+\label{sec:org9e8872e}
 Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\). \\[5pt]
 \textbf{Operações}:
 \[ L_1L_2 = \{\, xy \,\mid\, x \in L_1,\, y \in L_2 \,\} \\ \]
@@ -85,9 +85,9 @@ Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\). \\[5pt]
 \item Fecho de Kleene
 \end{itemize}
 \section{Autômatos finitos}
-\label{sec:org67046cd}
+\label{sec:orgebd45bd}
 \subsection{Determinísticos}
-\label{sec:orgf7f9af0}
+\label{sec:org5eb5df7}
 Um autômato finito determinístico é definido por:
 \begin{align*}
   & Q && \text{Um conjunto finito de estados.} \\
@@ -106,7 +106,7 @@ Um autômato finito determinístico é definido por:
 Ainda, nos autômatos existe um estado especial, denonimado \(\emptyset\), que aprisiona
 todas as transições omitidas.
 \subsubsection{Computação}
-\label{sec:org58f7844}
+\label{sec:org40d9e0c}
 Seja \(M = (Q,\, \Sigma,\, \delta,\, q_0,\, F)\) um autômato finito determinístico, e \(w
     \in \Sigma^*\). \\
 Dizemos que \(M\) aceita \(w\) se existe uma \textbf{sequência} de estados
@@ -119,7 +119,7 @@ Dizemos que \(M\) aceita \(w\) se existe uma \textbf{sequência} de estados
 Um autômato \(M\) reconhece uma linguagem \(L\) se \(\forall\, w \in L: M \text{ aceita } w\). \\
 Uma linguagem é regular se existe um autômato finito que a reconhece.
 \subsubsection{Minimização de estados}
-\label{sec:org4d40509}
+\label{sec:orgfc8888c}
 Dois estados \(e\) e \(e'\) são \textbf{equivalentes} se
 \[
   \hat{\delta}(e, w) \in F \iff \hat{\delta}(e', w) \in F
@@ -143,7 +143,7 @@ repita o passo 2.
 última partição \(P\) produzida.
 \end{enumerate}
 \subsection{Não determinísticos}
-\label{sec:org1eb1c28}
+\label{sec:orgfaefac2}
 Um autômato finito não determinístico é definido por:
 \begin{align*}
   & Q && \text{Um conjunto finito de estados.} \\
@@ -170,7 +170,7 @@ Por construção:
   & F = \left\{ X \subseteq Q_{\text{afn}} \,\mid\, X \cap F \neq \varnothing \right\}&&
 \end{align*}
 \subsubsection{Transições \(\lambda\)}
-\label{sec:orgb775e0a}
+\label{sec:orgcf46995}
 Um autômato finito não determinístico com transições \(\lambda\) introduz a
 possibilidade de transições sem a consumação de símbolos.
 \begin{align*}
@@ -206,7 +206,7 @@ Por construção:
   & F = F_{\text{afn}\lambda} &&
 \end{align*}
 \subsection{Com pilha}
-\label{sec:org87c0079}
+\label{sec:org6f54046}
 Um autômato finito com pilha não determinístico é definido por:
 \begin{align*}
   & Q && \text{Um conjunto finito de estados.} \\
@@ -222,7 +222,7 @@ transitado. \\ \\
 Um AFPN aceita uma palavra se ao consumí-la, encerra-se em um estado final \textbf{com a pilha
 vazia}.
 \section{Expressões regulares}
-\label{sec:org6451e07}
+\label{sec:orge987d35}
 Uma expressão regular pode ser uma das seguintes formas, cada qual com a linguagem
 correspondente:
 \begin{align*}
@@ -240,7 +240,7 @@ correspondente:
   & R^n = RR^{(n - 1)} &&
 \end{align*}
 \section{Linguagens irregulares}
-\label{sec:org672bea9}
+\label{sec:org8884313}
 Nas linguagens regulares, têm se o \textbf{lema do bombardeamento}: \\
 Se \(L\) é uma linguagem regular, então
 \begin{align*}
@@ -254,11 +254,11 @@ Se \(L\) é uma linguagem regular, então
 \end{align*}
 O lema pode ser utilizado para provar que uma dada linguagem não é regular.
 \section{Linguagens livres de contexto}
-\label{sec:orgba153b0}
+\label{sec:org14230f8}
 Uma linguagem livre de contexto é uma linguagem que pode ser denotada por uma gramática
 livre de contexto.
 \subsection{Gramáticas livres de contexto}
-\label{sec:org68d324c}
+\label{sec:org6ee2bdc}
 Uma gramática livre de contexto é definida por:
 \begin{align*}
   & V && \text{Um conjunto finito de variáveis.} \\
@@ -303,11 +303,48 @@ Se \(L\) é uma linguagem livre de contexto, então
 \end{align*}
 O lema pode ser utilizado para provar que uma dada linguagem não é livre de contexto.
 \subsection{Propriedade de fechamento}
-\label{sec:orgb6300c4}
+\label{sec:org92d1233}
 A classe das linguagens livre de contexto são fechadas sob as seguintes operações
 \begin{itemize}[itemsep=0pt]
 \item União
 \item Concatenação
 \item Fecho de Kleene
 \end{itemize}
+\section{Máquinas de Turing}
+\label{sec:org613e9db}
+Uma máquina de Turing é definida por:
+\begin{align*}
+  & Q && \text{Um conjunto finito de estados.} \\
+  & \Sigma && \text{Um alfabeto de linguagem finito.} \\
+  & \Gamma \supset \Sigma && \text{Um alfabeto de fita finito, no qual $\Sigma$ está contido.} \\
+  & \langle \enspace \in \Gamma && \text{Um demarcador do começo da fita.} \\
+  & \phi \in \Gamma && \text{Um símbolo nulo.} \\
+  & \delta: Q \times \Gamma \to Q \times \Gamma \times \{E, D\} && \text{Uma função de transição.} \\
+  & i \in Q && \text{Um estado inicial.} \\
+  & F \subseteq Q && \text{Um conjunto de estados finais.}
+\end{align*}
+Esta máquina possui uma fita, que inicialmente é
+\[
+  \left[\langle\,\Sigma^*\,\phi^\infty\right]
+\]
+A função de transição percorre a fita, consumindo símbolos e produzindo um estado alvo,
+o símbolo a substituir o símbolo atual, e a direção do próximo
+caminhamento. \\ \\
+O demarcador limita o caminhamento à esquerda, ao contrário do caminhamento à direita
+que é ilimitado:
+\[
+  \forall\> \delta, e \in Q: \>\delta\big(e, \langle\,\big) = \left[\,e',\, \langle\,,\, D\,\right]
+\]
+A máquina aceita uma palavra caso a transição estendida sobre esta palavra \textbf{encerra} em um
+estado final. Ao contrário dos autômatos, a máquina não transita implicitamente para um
+estado de erro quando a transição é indefinida. Neste caso, a máquina encerra a
+execução no estado corrente.
+\section{Linguagens recursivas e recursivamente enumeráveis}
+\label{sec:org7ea069e}
+Linguagens recursivamente enumeráveis são as linguagens reconhecidas por uma máquina de
+turing. \\
+Linguagens recursivas são as linguagens reconhecidas por uma máquina de turing que
+\textbf{sempre encerra}. \\ \\
+Portanto, as linguagens recursivas são um subconjunto das linguagens recursivamente
+enumeráveis.
 \end{document}

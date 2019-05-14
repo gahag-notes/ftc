@@ -305,3 +305,44 @@
    - União
    - Concatenação
    - Fecho de Kleene
+* Máquinas de Turing
+  Uma máquina de Turing é definida por:
+  #+begin_export latex
+  \begin{align*}
+    & Q && \text{Um conjunto finito de estados.} \\
+    & \Sigma && \text{Um alfabeto de linguagem finito.} \\
+    & \Gamma \supset \Sigma && \text{Um alfabeto de fita finito, no qual $\Sigma$ está contido.} \\
+    & \langle \enspace \in \Gamma && \text{Um demarcador do começo da fita.} \\
+    & \phi \in \Gamma && \text{Um símbolo nulo.} \\
+    & \delta: Q \times \Gamma \to Q \times \Gamma \times \{E, D\} && \text{Uma função de transição.} \\
+    & i \in Q && \text{Um estado inicial.} \\
+    & F \subseteq Q && \text{Um conjunto de estados finais.}
+  \end{align*}
+  #+end_export
+  Esta máquina possui uma fita, que inicialmente é
+  #+begin_export latex
+  \[
+    \left[\langle\,\Sigma^*\,\phi^\infty\right]
+  \]
+  #+end_export
+  A função de transição percorre a fita, consumindo símbolos e produzindo um estado alvo,
+  o símbolo a substituir o símbolo atual, e a direção do próximo
+  caminhamento. @@latex:\\@@ \\
+  O demarcador limita o caminhamento à esquerda, ao contrário do caminhamento à direita
+  que é ilimitado:
+  #+begin_export latex
+  \[
+    \forall\> \delta, e \in Q: \>\delta\big(e, \langle\,\big) = \left[\,e',\, \langle\,,\, D\,\right]
+  \]
+  #+end_export
+  A máquina aceita uma palavra caso a transição estendida sobre esta palavra *encerra* em um
+  estado final. Ao contrário dos autômatos, a máquina não transita implicitamente para um
+  estado de erro quando a transição é indefinida. Neste caso, a máquina encerra a
+  execução no estado corrente.
+* Linguagens recursivas e recursivamente enumeráveis
+  Linguagens recursivamente enumeráveis são as linguagens reconhecidas por uma máquina de
+  turing. \\
+  Linguagens recursivas são as linguagens reconhecidas por uma máquina de turing que
+  *sempre encerra*. @@latex:\\@@ \\
+  Portanto, as linguagens recursivas são um subconjunto das linguagens recursivamente
+  enumeráveis.
