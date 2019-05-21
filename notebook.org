@@ -260,7 +260,7 @@
    \end{align*}
    As regras são constituídas da seguinte forma:
    #+end_export
-   1. O lado esquerdo de uma regra é constituído por uma única variável.
+   1. O lado esquerdo de uma regra é constituído por *uma única variável*.
    2. O lado direito é constituído por uma combinação de terminais e variáveis.
    Por convenção a variável inicial é a variável alvo da primeira regra. @@latex:\vspace{5pt}@@ \\
    Exemplo:
@@ -346,3 +346,69 @@
   *sempre encerra*. @@latex:\\@@ \\
   Portanto, as linguagens recursivas são um subconjunto das linguagens recursivamente
   enumeráveis.
+** Gramáticas Irrestritas
+   Uma gramática irrestrita é dada por
+   #+begin_export latex
+   \begin{align*}
+     & V && \text{Um conjunto finito de variáveis.} \\
+     & \Sigma && \text{Um alfabeto finito.} \\
+     & R = \left\{ \alpha \to \beta \enspace\big|\enspace \alpha \in \left(V \cup \Sigma\right)^+,\> \beta \in \left(V \cup \Sigma\right)^* \right\} && \text{Um conjunto de regras.} \\
+     & S \in V && \text{Uma variável inicial.}
+   \end{align*}
+   As regras são constituídas da seguinte forma:
+   #+end_export
+   As linguagens geradas por gramáticas irrestritas são linguages recursivamente
+   enumeráveis.
+* Linguagens Sensíveis ao Contexto
+** Gramáticas Sensíveis ao Contexto
+   Uma gramática sensível ao contexto é dada por
+   #+begin_export latex
+   \begin{align*}
+     & V && \text{Um conjunto finito de variáveis.} \\
+     & \Sigma && \text{Um alfabeto finito.} \\
+     & R = \left\{ \alpha \to \beta \enspace\big|\enspace \alpha, \beta \in \left(V \cup \Sigma\right)^+,\> |\alpha| \leq |\beta| \right\} && \text{Um conjunto de regras.} \\
+     & S \in V && \text{Uma variável inicial.}
+   \end{align*}
+   #+end_export
+   As gramáticas sensíveis ao contexto são *mais restritas* que as gramáticas irrestritas.
+* Autômato linearmente limitado
+  Um autômato linearmente limitado é uma maquina de turing não determinística com uma fita
+  limitada:
+  #+begin_export latex
+  \begin{align*}
+    & Q && \text{Um conjunto finito de estados.} \\
+    & \Sigma && \text{Um alfabeto de linguagem finito.} \\
+    & \Gamma \supset \Sigma && \text{Um alfabeto de fita finito, no qual $\Sigma$ está contido.} \\
+    & \langle \enspace \in \Gamma && \text{Um demarcador do começo da fita.} \\
+    & \rangle \enspace \in \Gamma && \text{Um demarcador do fim da fita.} \\
+    & \phi \in \Gamma && \text{Um símbolo nulo.} \\
+    & \delta: Q \times \Gamma \to \mathcal{P}\big(Q \times \Gamma \times \{E, D\}\big) && \text{Uma função de transição não determinística.} \\
+    & i \in Q && \text{Um estado inicial.} \\
+    & F \subseteq Q && \text{Um conjunto de estados finais.}
+  \end{align*}
+  #+end_export
+  Esta máquina possui uma fita, que inicialmente é
+  #+begin_export latex
+  \[
+    \left[\langle\,\Sigma^* \rangle\right]
+  \]
+  #+end_export
+* Hierarquia de Chomsky
+  Chomsky definiu a seguinte hierarquia das linguagens:
+  #+begin_export latex
+  \begin{table}[H]
+    \centering
+    \left\downarrow
+    \begin{tabular}{l}
+      $\mathcal{P}(\Sigma^*)$ \\
+      Linguagens Recursivamente Enumeráveis \\
+      Linguages Recursivas \\
+      Linguagens Sensíveis ao Contexto \\
+      Linguagens Livres de Contexto \\
+      Linguagens Regulares
+    \end{tabular}
+    \right.
+  \end{table}
+  #+end_export
+  *Tese de Church-Turing*: Se uma função é computável, ela pode ser computada pela máquina
+  de Turing.

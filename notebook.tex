@@ -1,4 +1,4 @@
-% Created 2019-05-14 Tue 20:17
+% Created 2019-05-21 Tue 20:33
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt]{article}
 \usepackage[utf8]{inputenc}
@@ -32,9 +32,9 @@
 
 
 \section{Linguagens regulares}
-\label{sec:org9da1c8c}
+\label{sec:org0a29929}
 \subsection{Alfabetos}
-\label{sec:orgbe85d54}
+\label{sec:org9240ad6}
 Um alfabeto é denotado por \(\Sigma\). Exemplos:
 \[
   \Sigma = \{\, 0, 1 \,\} \qquad
@@ -42,7 +42,7 @@ Um alfabeto é denotado por \(\Sigma\). Exemplos:
   \Sigma = \{\, \triangle, \text{O}, \square, \text{X} \,\}
 \]
 \subsection{Palavras}
-\label{sec:org168d103}
+\label{sec:org95fb641}
 Uma palavra (ou cadeia) é uma sequência de zero ou mais símbolos do alfabeto.
 \\[5pt]
 \textbf{Notação}:
@@ -63,7 +63,7 @@ Uma palavra (ou cadeia) é uma sequência de zero ou mais símbolos do alfabeto.
 \]
 Observação: uma palavra \(w\) é um palíndromo se, e somente se \(w^{\text{R}} = w\).
 \subsection{Linguagens}
-\label{sec:org9e8872e}
+\label{sec:orgf26c85b}
 Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\). \\[5pt]
 \textbf{Operações}:
 \[ L_1L_2 = \{\, xy \,\mid\, x \in L_1,\, y \in L_2 \,\} \\ \]
@@ -85,9 +85,9 @@ Uma linguagem é um conjunto de palavras \(L \subseteq \Sigma^*\). \\[5pt]
 \item Fecho de Kleene
 \end{itemize}
 \section{Autômatos finitos}
-\label{sec:orgebd45bd}
+\label{sec:orgda72aad}
 \subsection{Determinísticos}
-\label{sec:org5eb5df7}
+\label{sec:org4226ac7}
 Um autômato finito determinístico é definido por:
 \begin{align*}
   & Q && \text{Um conjunto finito de estados.} \\
@@ -106,7 +106,7 @@ Um autômato finito determinístico é definido por:
 Ainda, nos autômatos existe um estado especial, denonimado \(\emptyset\), que aprisiona
 todas as transições omitidas.
 \subsubsection{Computação}
-\label{sec:org40d9e0c}
+\label{sec:org7f4c969}
 Seja \(M = (Q,\, \Sigma,\, \delta,\, q_0,\, F)\) um autômato finito determinístico, e \(w
     \in \Sigma^*\). \\
 Dizemos que \(M\) aceita \(w\) se existe uma \textbf{sequência} de estados
@@ -119,7 +119,7 @@ Dizemos que \(M\) aceita \(w\) se existe uma \textbf{sequência} de estados
 Um autômato \(M\) reconhece uma linguagem \(L\) se \(\forall\, w \in L: M \text{ aceita } w\). \\
 Uma linguagem é regular se existe um autômato finito que a reconhece.
 \subsubsection{Minimização de estados}
-\label{sec:orgfc8888c}
+\label{sec:orgf3f0190}
 Dois estados \(e\) e \(e'\) são \textbf{equivalentes} se
 \[
   \hat{\delta}(e, w) \in F \iff \hat{\delta}(e', w) \in F
@@ -143,7 +143,7 @@ repita o passo 2.
 última partição \(P\) produzida.
 \end{enumerate}
 \subsection{Não determinísticos}
-\label{sec:orgfaefac2}
+\label{sec:org205d9c3}
 Um autômato finito não determinístico é definido por:
 \begin{align*}
   & Q && \text{Um conjunto finito de estados.} \\
@@ -170,7 +170,7 @@ Por construção:
   & F = \left\{ X \subseteq Q_{\text{afn}} \,\mid\, X \cap F \neq \varnothing \right\}&&
 \end{align*}
 \subsubsection{Transições \(\lambda\)}
-\label{sec:orgcf46995}
+\label{sec:orgb763c19}
 Um autômato finito não determinístico com transições \(\lambda\) introduz a
 possibilidade de transições sem a consumação de símbolos.
 \begin{align*}
@@ -206,7 +206,7 @@ Por construção:
   & F = F_{\text{afn}\lambda} &&
 \end{align*}
 \subsection{Com pilha}
-\label{sec:org6f54046}
+\label{sec:orgd7184b9}
 Um autômato finito com pilha não determinístico é definido por:
 \begin{align*}
   & Q && \text{Um conjunto finito de estados.} \\
@@ -222,7 +222,7 @@ transitado. \\ \\
 Um AFPN aceita uma palavra se ao consumí-la, encerra-se em um estado final \textbf{com a pilha
 vazia}.
 \section{Expressões regulares}
-\label{sec:orge987d35}
+\label{sec:org2e61fbd}
 Uma expressão regular pode ser uma das seguintes formas, cada qual com a linguagem
 correspondente:
 \begin{align*}
@@ -240,7 +240,7 @@ correspondente:
   & R^n = RR^{(n - 1)} &&
 \end{align*}
 \section{Linguagens irregulares}
-\label{sec:org8884313}
+\label{sec:org8601ecf}
 Nas linguagens regulares, têm se o \textbf{lema do bombardeamento}: \\
 Se \(L\) é uma linguagem regular, então
 \begin{align*}
@@ -254,11 +254,11 @@ Se \(L\) é uma linguagem regular, então
 \end{align*}
 O lema pode ser utilizado para provar que uma dada linguagem não é regular.
 \section{Linguagens livres de contexto}
-\label{sec:org14230f8}
+\label{sec:org88cc66d}
 Uma linguagem livre de contexto é uma linguagem que pode ser denotada por uma gramática
 livre de contexto.
 \subsection{Gramáticas livres de contexto}
-\label{sec:org6ee2bdc}
+\label{sec:org686c08b}
 Uma gramática livre de contexto é definida por:
 \begin{align*}
   & V && \text{Um conjunto finito de variáveis.} \\
@@ -268,7 +268,7 @@ Uma gramática livre de contexto é definida por:
 \end{align*}
 As regras são constituídas da seguinte forma:
 \begin{enumerate}
-\item O lado esquerdo de uma regra é constituído por uma única variável.
+\item O lado esquerdo de uma regra é constituído por \textbf{uma única variável}.
 \item O lado direito é constituído por uma combinação de terminais e variáveis.
 \end{enumerate}
 Por convenção a variável inicial é a variável alvo da primeira regra. \vspace{5pt} \\
@@ -303,7 +303,7 @@ Se \(L\) é uma linguagem livre de contexto, então
 \end{align*}
 O lema pode ser utilizado para provar que uma dada linguagem não é livre de contexto.
 \subsection{Propriedade de fechamento}
-\label{sec:org92d1233}
+\label{sec:orgd8a8072}
 A classe das linguagens livre de contexto são fechadas sob as seguintes operações
 \begin{itemize}[itemsep=0pt]
 \item União
@@ -311,7 +311,7 @@ A classe das linguagens livre de contexto são fechadas sob as seguintes operaç
 \item Fecho de Kleene
 \end{itemize}
 \section{Máquinas de Turing}
-\label{sec:org613e9db}
+\label{sec:org1668b59}
 Uma máquina de Turing é definida por:
 \begin{align*}
   & Q && \text{Um conjunto finito de estados.} \\
@@ -340,11 +340,72 @@ estado final. Ao contrário dos autômatos, a máquina não transita implicitame
 estado de erro quando a transição é indefinida. Neste caso, a máquina encerra a
 execução no estado corrente.
 \section{Linguagens recursivas e recursivamente enumeráveis}
-\label{sec:org7ea069e}
+\label{sec:orgf2a8534}
 Linguagens recursivamente enumeráveis são as linguagens reconhecidas por uma máquina de
 turing. \\
 Linguagens recursivas são as linguagens reconhecidas por uma máquina de turing que
 \textbf{sempre encerra}. \\ \\
 Portanto, as linguagens recursivas são um subconjunto das linguagens recursivamente
 enumeráveis.
+\subsection{Gramáticas Irrestritas}
+\label{sec:org9ea8d86}
+Uma gramática irrestrita é dada por
+\begin{align*}
+  & V && \text{Um conjunto finito de variáveis.} \\
+  & \Sigma && \text{Um alfabeto finito.} \\
+  & R = \left\{ \alpha \to \beta \enspace\big|\enspace \alpha \in \left(V \cup \Sigma\right)^+,\> \beta \in \left(V \cup \Sigma\right)^* \right\} && \text{Um conjunto de regras.} \\
+  & S \in V && \text{Uma variável inicial.}
+\end{align*}
+As regras são constituídas da seguinte forma:
+As linguagens geradas por gramáticas irrestritas são linguages recursivamente
+enumeráveis.
+\section{Linguagens Sensíveis ao Contexto}
+\label{sec:orga304023}
+\subsection{Gramáticas Sensíveis ao Contexto}
+\label{sec:org392c4b9}
+Uma gramática sensível ao contexto é dada por
+\begin{align*}
+  & V && \text{Um conjunto finito de variáveis.} \\
+  & \Sigma && \text{Um alfabeto finito.} \\
+  & R = \left\{ \alpha \to \beta \enspace\big|\enspace \alpha, \beta \in \left(V \cup \Sigma\right)^+,\> |\alpha| \leq |\beta| \right\} && \text{Um conjunto de regras.} \\
+  & S \in V && \text{Uma variável inicial.}
+\end{align*}
+As gramáticas sensíveis ao contexto são \textbf{mais restritas} que as gramáticas irrestritas.
+\section{Autômato linearmente limitado}
+\label{sec:org62c8211}
+Um autômato linearmente limitado é uma maquina de turing não determinística com uma fita
+limitada:
+\begin{align*}
+  & Q && \text{Um conjunto finito de estados.} \\
+  & \Sigma && \text{Um alfabeto de linguagem finito.} \\
+  & \Gamma \supset \Sigma && \text{Um alfabeto de fita finito, no qual $\Sigma$ está contido.} \\
+  & \langle \enspace \in \Gamma && \text{Um demarcador do começo da fita.} \\
+  & \rangle \enspace \in \Gamma && \text{Um demarcador do fim da fita.} \\
+  & \phi \in \Gamma && \text{Um símbolo nulo.} \\
+  & \delta: Q \times \Gamma \to \mathcal{P}\big(Q \times \Gamma \times \{E, D\}\big) && \text{Uma função de transição não determinística.} \\
+  & i \in Q && \text{Um estado inicial.} \\
+  & F \subseteq Q && \text{Um conjunto de estados finais.}
+\end{align*}
+Esta máquina possui uma fita, que inicialmente é
+\[
+  \left[\langle\,\Sigma^* \rangle\right]
+\]
+\section{Hierarquia de Chomsky}
+\label{sec:orgae4a1ba}
+Chomsky definiu a seguinte hierarquia das linguagens:
+\begin{table}[H]
+  \centering
+  \left\downarrow
+  \begin{tabular}{l}
+    $\mathcal{P}(\Sigma^*)$ \\
+    Linguagens Recursivamente Enumeráveis \\
+    Linguages Recursivas \\
+    Linguagens Sensíveis ao Contexto \\
+    Linguagens Livres de Contexto \\
+    Linguagens Regulares
+  \end{tabular}
+  \right.
+\end{table}
+\textbf{Tese de Church-Turing}: Se uma função é computável, ela pode ser computada pela máquina
+de Turing.
 \end{document}
