@@ -299,12 +299,26 @@
    \end{align*}
    #+end_export
    O lema pode ser utilizado para provar que uma dada linguagem não é livre de contexto.
+** Forma normal de Chomsky
+   Uma gramática livre de contexto está na forma normal de Chomsky se todas as suas regras
+   de produção estão em uma das seguintes formas:
+   #+begin_export latex
+   \begin{align*}
+     & A \to BC && \text{Combinação de duas variáveis.} \\
+     & A \to \alpha && \text{Um único terminal.} \\
+     & S \to \lambda && \text{Variável vazia.}
+   \end{align*}
+   #+end_export
+   Onde apenas $A$ e $S$ podem ser a variável inicial. @@latex:\\@@ \\
+   *Teorema*: toda gramática livre de contexto pode ser transformada para a forma normal
+   de Chomsky.
 ** Propriedade de fechamento
    A classe das linguagens livre de contexto são fechadas sob as seguintes operações
    #+attr_latex: :options [itemsep=0pt]
    - União
    - Concatenação
    - Fecho de Kleene
+   @@latex:\pagebreak@@
 * Máquinas de Turing
   Uma máquina de Turing é definida por:
   #+begin_export latex
@@ -400,7 +414,7 @@
     \centering
     \left\downarrow
     \begin{tabular}{l}
-      $\mathcal{P}(\Sigma^*)$ \\
+      $\mathcal{P}(\Sigma^*) \qquad$ Qualquer conjunto de palavras \\
       Linguagens Recursivamente Enumeráveis \\
       Linguages Recursivas \\
       Linguagens Sensíveis ao Contexto \\
