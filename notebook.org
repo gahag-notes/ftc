@@ -416,7 +416,7 @@
     \begin{tabular}{l}
       $\mathcal{P}(\Sigma^*) \qquad$ Qualquer conjunto de palavras \\
       Linguagens Recursivamente Enumeráveis \\
-      Linguages Recursivas \\
+      Linguagens Recursivas \\
       Linguagens Sensíveis ao Contexto \\
       Linguagens Livres de Contexto \\
       Linguagens Regulares
